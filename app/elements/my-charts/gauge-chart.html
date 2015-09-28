@@ -1,0 +1,58 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/google-chart/google-chart.html">
+
+<dom-module id="gauge-chart">
+  <template>
+    <style>
+    :host {
+      display: block;
+      position: relative;
+      background-color: white;
+      padding: 20px;
+      width: 400px;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+    .card-header {
+      margin-bottom: 60px;
+    }
+    polyfill-next-selector { content: '.card h2'; }
+    .card-header ::content h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 300;
+    }
+    polyfill-next-selector { content: '.card p';}
+    .card-header ::content p {
+      margin: 10px;
+    }
+    google-chart {
+      width: 500px;
+      height: 220px;
+    }
+    </style>
+    
+    <!-- CONTENT HERE -->
+    <div class="card-header" layout horizontal center>
+      <content select="h2"></content>
+      <content select="p"></content>
+    </div> 
+    <google-chart
+      type='gauge'
+      options='{"width":"800", "height":"220", "redFrom":90, "redTo":100, "yellowFrom":75, "yellowTo":90, "minorTicks":5 }'
+
+      data='[ ["Attribute", "Value"], ["VOL", 31],["HEIGHT", 28],["WATER VOL", 31], ["WATER", 50], ["TEMP", 60] ]'
+    >
+    </google-chart>
+    
+  </template>
+  
+  <script>
+    Polymer({
+      is: 'gauge-chart',
+      ready: function() {
+      }
+    });
+  </script>
+    
+</dom-module>
